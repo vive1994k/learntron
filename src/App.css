@@ -1,0 +1,27 @@
+@import url('pure.css');
+@import url('pure-responsive.css');
+@import url('utilities.css');
+
+body {
+  background-color: #f0f0f5;
+  font-size: 16px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #2F4F4F;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+}
+
+@media screen and (min-width: 48em) {
+	.q-list-container {
+		display: flex;
+	}
+}

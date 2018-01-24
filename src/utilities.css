@@ -1,0 +1,18 @@
+.v-align-middle {
+	vertical-align: middle;
+}
+
+.t-align-center {
+	text-align: center;
+}
+
+input {
+	background-color: #D1EEEE;
+	padding: 3px;
+	border: 1px solid #4A777A;
+	border-radius: 3px;
+}
+
+.u-hide {
+	display: none !important;
+}
