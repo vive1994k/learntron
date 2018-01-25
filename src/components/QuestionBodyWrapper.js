@@ -5,9 +5,9 @@ import OptionWrapper from './OptionWrapper';
 import { isOptionsValid } from '../utilities/helper';
 
 class QuestionBodyWrapper extends Component {
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
   changeHandler(payload, type){
     let newQuestionObj = Object.assign({}, this.props.currentQuestionObj);
@@ -38,10 +38,14 @@ class QuestionBodyWrapper extends Component {
   render () {
     console.log('QuestionBodyWrapper render', this.props.currentQuestionObj);
     let {options=[], text='', imgUrl=''} = this.props.currentQuestionObj;
+    let {currentQuestionIdx} = this.props; 
+    let bodyHeading = typeof(currentQuestionIdx) !== 'undefined' && currentQuestionIdx>-1 ? `Design Question ${currentQuestionIdx+1}` : 'Design New Question';
+
+
     return (
       <div className='q-body' >
         <div className="q-sec-heading">
-          Design Question 1
+          {bodyHeading}
         </div>
         <QuestionContent 
           changeHandler={this.changeHandler.bind(this)} 

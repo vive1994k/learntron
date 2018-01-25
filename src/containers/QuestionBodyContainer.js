@@ -5,8 +5,6 @@ import { updateCurrentQuestion, updateNewQuestion, deleteNewQuestion, addNewQues
 import { setCurrentQuestionIndex } from '../actions/utilities';
 
 const mapStateToProps = state => {
-  console.log('body container', state);
-
   let {questions=[]} = state.questionsInfo;
   let {currentQuestionIdx} = state.misc;
   let currentQuestionObj;
@@ -34,7 +32,6 @@ const mapDispatchToProps = dispatch => {
     	dispatch(deleteNewQuestion());
     },
     saveNewQuestion: (newQuestionPayload, currentQuestionIdx) => {
-    	console.log('saveNewQuestion');debugger;
     	dispatch(deleteNewQuestion());
     	dispatch(addNewQuestionToList(newQuestionPayload));
     	dispatch(setCurrentQuestionIndex(currentQuestionIdx));

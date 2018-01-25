@@ -4,9 +4,9 @@ import './question.css';
 import { map as _map, isEmpty as _isEmpty } from 'lodash';
 
 class QuestionListWrapper extends Component {
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
   questionClickHandler(index){
     this.props.questionClickHandler(index);

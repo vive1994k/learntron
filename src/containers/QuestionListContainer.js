@@ -4,7 +4,6 @@ import { setCurrentQuestionIndex } from '../actions/utilities';
 import { deleteCurrentQuestion, deleteNewQuestion } from '../actions/questions';
 
 const mapStateToProps = state => {
-  console.log('list container', state);
   let {questions=[]} = state.questionsInfo;
   let {newQuestion={}} = state;
   let currentQuestionIdx;
