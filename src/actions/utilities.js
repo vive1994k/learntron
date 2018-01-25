@@ -6,12 +6,3 @@ export function setCurrentQuestionIndex(currentQuestionIdx) {
     }
   }
 }
-
-export function deleteCurrentQuestion(currentQuestionIdx) {
-  return {
-    type: 'DELETE_CURRENT_QUESTION',
-    data: {
-      currentQuestionIdx: currentQuestionIdx
-    }
-  }
-}

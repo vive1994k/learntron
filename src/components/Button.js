@@ -3,7 +3,6 @@ import './button.css'
 
 class Button extends Component {
   clickHadler(event) {
-    console.log("Button clicked");
     this.props.onButtonClick();
   }
   render () {

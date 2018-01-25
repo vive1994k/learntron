@@ -36,7 +36,6 @@ class QuestionBodyWrapper extends Component {
     }
   }
   render () {
-    console.log('QuestionBodyWrapper render', this.props.currentQuestionObj);
     let {options=[], text='', imgUrl=''} = this.props.currentQuestionObj;
     let {currentQuestionIdx} = this.props; 
     let bodyHeading = typeof(currentQuestionIdx) !== 'undefined' && currentQuestionIdx>-1 ? `Design Question ${currentQuestionIdx+1}` : 'Design New Question';

@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import QuestionListWrapper from '../components/QuestionListWrapper';
 import { setCurrentQuestionIndex } from '../actions/utilities';
 import { deleteCurrentQuestion, deleteNewQuestion } from '../actions/questions';
+import { fetchData } from '../actions/fetchData';
 
 const mapStateToProps = state => {
   let {questions=[]} = state.questionsInfo;
@@ -32,6 +33,9 @@ const mapDispatchToProps = dispatch => {
     },
     questionClickHandler: (currentQuestionIdx) => {
 			dispatch(setCurrentQuestionIndex(currentQuestionIdx));
+    },
+    fetchData: () => {
+      dispatch(fetchData());
     }
   }
 };

@@ -23,6 +23,11 @@ const questionsInfo = (state = {}, action) => {
         ...state,
         questions: newQuestionsList
       }
+    case 'SET_QUESTIONS_INFO':
+      return {
+        ...state,
+        ...(action.data.questionsInfo)
+      }
 
     default:
       return state

@@ -8,6 +8,10 @@ class QuestionListWrapper extends Component {
   //   super(props);
   // }
 
+  componentDidMount(){
+    this.props.fetchData();
+  }
+
   questionClickHandler(index){
     this.props.questionClickHandler(index);
   }

@@ -18,7 +18,6 @@ class QuestionContent extends Component {
   }
 
   render () {
-  	
     return (
       <div className='q-text-wrapper' >
         <div className="q-text">
@@ -29,7 +28,7 @@ class QuestionContent extends Component {
             <TextareaAutosize
               style={textareastyle}
               placeholder="Enter option"
-              value={this.props.qtext}
+              value={this.props.text}
               onChange={this.textChangeHandler.bind(this)}/>
           </div>
         </div>

@@ -28,7 +28,6 @@ const mapDispatchToProps = dispatch => {
     	dispatch(updateNewQuestion(newQuestionPayload));
     },
     deleteNewQuestion: () => {
-    	console.log('deleteNewQuestion');
     	dispatch(deleteNewQuestion());
     },
     saveNewQuestion: (newQuestionPayload, currentQuestionIdx) => {

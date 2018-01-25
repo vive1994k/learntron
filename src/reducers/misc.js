@@ -6,6 +6,11 @@ const miscData = (state = {}, action) => {
         currentQuestionIdx: action.data.currentQuestionIdx
       }
 
+   	case 'SET_MISC_DATA':
+   		return {
+   			...(action.data.misc)
+   		};
+
     default:
       return state
   }
