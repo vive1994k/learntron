@@ -1,41 +1,50 @@
 import React, { Component } from 'react';
 import Button from './Button';
 import './question.css';
-import { map as _map } from 'lodash';
+import { map as _map, isEmpty as _isEmpty } from 'lodash';
 
 class QuestionListWrapper extends Component {
+  constructor(props){
+    super(props);
+  }
+
   questionClickHandler(index){
     this.props.questionClickHandler(index);
   }
 
   addClickHandler(){
-    console.log('addClickHandler');
-    let newCurrentQuestion;
-
-    if(this.props.currentQuestion === -1){
-      newCurrentQuestion = 0;
-    } else{
-      newCurrentQuestion = this.props.questions.length+1;
-    }
-
-    this.props.addButtonHandler(newCurrentQuestion);
+    this.props.addButtonHandler(-1);
   }
 
   deleteClickHandler() {
-    this.props.deleteButtonHandler();
+    this.props.deleteButtonHandler(this.props.currentQuestionIdx);
   }
 
   getQuestionList(){
     let _self = this;
+    let newQuestionTemplate=null;
+    let {currentQuestionIdx} = this.props;
+
+    if(!_isEmpty(_self.props.newQuestion)){
+      let newQuestionClass = (typeof(currentQuestionIdx) === 'undefined' || currentQuestionIdx === -1) ? 'q-selected' : ''; 
+      newQuestionTemplate = (
+        <div key='newQuestion' className={`q-item ${newQuestionClass}`} onClick={_self.questionClickHandler.bind(_self, -1)}>
+          {_self.props.questions.length+1}. {_self.props.newQuestion.text}
+        </div>
+      );
+    }
+
     return (
       <div className="q-list">
         {_map(_self.props.questions, function(thisQuestion, index){
+          let qItemClass = currentQuestionIdx === index ? 'q-selected' : '';
           return(
-            <div className="q-item q-selected" onClick={_self.questionClickHandler.bind(_self, index)}>
-              {index}. This is the question.
+            <div key={index} className={`q-item ${qItemClass}`} onClick={_self.questionClickHandler.bind(_self, index)}>
+              {index+1}. {thisQuestion.text}
             </div>
           );
         })}
+        {newQuestionTemplate}
       </div>
     );
   }
@@ -52,8 +61,13 @@ class QuestionListWrapper extends Component {
         </div>
         {this.getQuestionList()}
         <div>
-          <Button text="Add" onButtonClick={this.addClickHandler.bind(this)}/>
-          <Button buttonClass={deleteButtonClass} text="Delete"/>
+          <Button 
+            text="Add"
+            onButtonClick={this.addClickHandler.bind(this)}/>
+          <Button 
+            buttonClass={deleteButtonClass} 
+            text="Delete"
+            onButtonClick={this.deleteClickHandler.bind(this)}/>
         </div>
       </div>
     )

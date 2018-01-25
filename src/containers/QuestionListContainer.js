@@ -1,34 +1,38 @@
 import { connect } from 'react-redux';
 import QuestionListWrapper from '../components/QuestionListWrapper';
-import {isEmpty as _isEmpty, isUndefined as _isUndefined } from 'lodash';
-import { setCurrentQuestion } from '../actions/utilities';
+import { setCurrentQuestionIndex } from '../actions/utilities';
+import { deleteCurrentQuestion, deleteNewQuestion } from '../actions/questions';
 
 const mapStateToProps = state => {
   console.log('list container', state);
   let {questions=[]} = state.questionsInfo;
-  let currentQuestion;
+  let {newQuestion={}} = state;
+  let currentQuestionIdx;
 
-  if(!_isEmpty(state.newQuestion)){
-  	questions.push(state.newQuestion);
-  }
-  currentQuestion = _isUndefined(state.misc.currentQuestion) ? -1 : state.currentQuestion;
+  currentQuestionIdx = state.misc.currentQuestionIdx;
 
   return {
     questions,
-    currentQuestion
+    newQuestion,
+    currentQuestionIdx
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addButtonHandler: (currentQuestion) => {
-    	dispatch(setCurrentQuestion(currentQuestion));
+    addButtonHandler: (currentQuestionIdx) => {
+    	dispatch(setCurrentQuestionIndex(currentQuestionIdx));
     },
-    deleteButtonHandler: () => {
-
+    deleteButtonHandler: (currentQuestionIdx) => {
+      if(typeof(currentQuestionIdx) !== 'undefined' && currentQuestionIdx>=0){
+        dispatch(setCurrentQuestionIndex(currentQuestionIdx-1));
+        dispatch(deleteCurrentQuestion(currentQuestionIdx));
+      } else {
+        dispatch(deleteNewQuestion());
+      }
     },
-    questionClickHandler: (currentQuestion) => {
-			dispatch(setCurrentQuestion(currentQuestion));
+    questionClickHandler: (currentQuestionIdx) => {
+			dispatch(setCurrentQuestionIndex(currentQuestionIdx));
     }
   }
 };

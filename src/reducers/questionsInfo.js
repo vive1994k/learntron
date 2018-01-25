@@ -1,14 +1,27 @@
 const questionsInfo = (state = {}, action) => {
+  let newQuestionsList = Object.assign([], state.questions);
   switch (action.type) {
-    case 'ADD_QUESTION':
+    case 'ADD_NEW_QUESTION_TO_LIST':
+      newQuestionsList.push(action.data.newQuestionObj);
+      
       return {
         ...state,
-        ...(action.data)
+        questions: newQuestionsList
       }
-    case 'DELETE_QUESTION':
+
+    case 'UPDATE_CURRENT_QUESTION':
+      newQuestionsList[action.data.index] = action.data.currentQuestionObj;
+      
       return {
         ...state,
-        ...(action.data)
+        questions: newQuestionsList
+      }
+
+    case 'DELETE_CURRENT_QUESTION':
+      newQuestionsList.splice(action.data.currentQuestionIdx, 1);
+      return {
+        ...state,
+        questions: newQuestionsList
       }
 
     default:

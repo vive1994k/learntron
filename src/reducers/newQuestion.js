@@ -1,15 +1,12 @@
 const newQuestion = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_QUESTION':
+    case 'UPDATE_NEW_QUESTION':
       return {
         ...state,
-        ...(action.data)
-      }
-    case 'DELETE_QUESTION':
-      return {
-        ...state,
-        ...(action.data)
-      }
+        ...(action.data.newQuestionObj)
+      };
+    case 'DELETE_NEW_QUESTION':
+      return {};
 
     default:
       return state

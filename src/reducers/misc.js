@@ -3,7 +3,7 @@ const miscData = (state = {}, action) => {
     case 'SET_CURRENT_QUESTION':
       return {
         ...state,
-        currentQuestion: action.data.currentQuestion
+        currentQuestionIdx: action.data.currentQuestionIdx
       }
 
     default:

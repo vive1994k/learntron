@@ -11,6 +11,12 @@ const textareastyle = {
 };
 
 class QuestionContent extends Component {
+  textChangeHandler (event) {
+    let newQtext = event.target.value;
+
+    this.props.changeHandler(newQtext, 'qtext');
+  }
+
   render () {
   	
     return (
@@ -22,7 +28,9 @@ class QuestionContent extends Component {
           <div className="pure-u-1 pure-u-md-4-5 v-align-middle">
             <TextareaAutosize
               style={textareastyle}
-              placeholder="Enter option"/>
+              placeholder="Enter option"
+              value={this.props.qtext}
+              onChange={this.textChangeHandler.bind(this)}/>
           </div>
         </div>
         <div className="t-align-center">
