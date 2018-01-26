@@ -1,4 +1,4 @@
-This project is built on create-react-app boilerplate  [Create React App](https://github.com/facebookincubator/create-react-app).
+This project is built on create-react-app boilerplate. Its a react-redux single page app.  [Create React App](https://github.com/facebookincubator/create-react-app). 
 
 ## Steps to run the web application
 
