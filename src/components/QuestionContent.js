@@ -41,7 +41,7 @@ class QuestionContent extends Component {
     if(this.props.imgUrl){
       imageTemplate = (
         <div className="q-img-wrapper">
-          <img className="q-img" src={this.props.imgUrl} alt="question image"/>
+          <img className="q-img" src={this.props.imgUrl} alt="question helper"/>
         </div>
       );
     }

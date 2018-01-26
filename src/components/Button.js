@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import './button.css'
 
 class Button extends Component {
-  clickHadler(event) {
+  clickHandler(event) {
     this.props.onButtonClick();
   }
   render () {
   	
     return (
-      <div className={`action-button ${this.props.buttonClass}`} onClick={this.clickHadler.bind(this)}>
+      <div className={`action-button ${this.props.buttonClass}`} onClick={this.clickHandler.bind(this)}>
         {this.props.text}
       </div>
     )
