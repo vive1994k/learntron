@@ -17,9 +17,43 @@ class QuestionContent extends Component {
     this.props.changeHandler(newQtext, 'qtext');
   }
 
+  handleImageUpload(event){
+    event.preventDefault();
+
+    let reader = new FileReader();
+    let file = event.target.files[0];
+
+    reader.onloadend = () => {
+      this.props.changeHandler(reader.result, 'imgUrl');
+    }
+
+    reader.readAsDataURL(file)
+  }
+
+  onButtonClick(){
+    let input = this.refs.qPhotoFileUpload;
+    input.click();
+  }
+
+  getImage(){
+    let imageTemplate = null;
+
+    if(this.props.imgUrl){
+      imageTemplate = (
+        <div className="q-img-wrapper">
+          <img className="q-img" src={this.props.imgUrl} alt="question image"/>
+        </div>
+      );
+    }
+
+    return imageTemplate;
+  }
+
   render () {
+    let buttonText = this.props.imgUrl ? 'Change Image' : 'Add Image';
+
     return (
-      <div className='q-text-wrapper' >
+      <div className="q-text-wrapper" >
         <div className="q-text">
           <div className="pure-u-1 pure-u-md-1-5 v-align-middle q-label">
             Question
@@ -33,8 +67,15 @@ class QuestionContent extends Component {
           </div>
         </div>
         <div className="t-align-center">
-          <Button text="Add Image"/>
+          <Button text={buttonText} onButtonClick={this.onButtonClick.bind(this)}/>
+          <input 
+            className="u-hide"
+            type="file"
+            ref="qPhotoFileUpload"
+            onChange={this.handleImageUpload.bind(this)}
+            accept="image/jpeg, image/jpg, image/png"/>
         </div>
+        {this.getImage()}
       </div>
     )
   }
